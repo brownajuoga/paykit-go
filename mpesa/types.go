@@ -23,6 +23,28 @@ type STKPushResponse struct {
 	CustomerMessage     string `json:"CustomerMessage"`
 }
 
+// STKPushQueryRequest is the payload sent to /mpesa/stkpushquery/v1/query
+// to check the status of a previously-initiated STK Push transaction.
+type STKPushQueryRequest struct {
+	IdempotencyKey    string `json:"-"`
+	BusinessShortCode string `json:"BusinessShortCode"`
+	Password          string `json:"Password"`
+	Timestamp         string `json:"Timestamp"`
+	CheckoutRequestID string `json:"CheckoutRequestID"`
+}
+
+// STKPushQueryResponse is the synchronous reply from the STK Push Query API.
+// ResponseCode "0" means the query was received; the transaction outcome is
+// conveyed by ResultCode ("0" = paid, non-zero = cancelled / failed).
+type STKPushQueryResponse struct {
+	ResponseCode        string `json:"ResponseCode"`
+	ResponseDescription string `json:"ResponseDescription"`
+	MerchantRequestID   string `json:"MerchantRequestID"`
+	CheckoutRequestID   string `json:"CheckoutRequestID"`
+	ResultCode          string `json:"ResultCode"`
+	ResultDesc          string `json:"ResultDesc"`
+}
+
 type C2BRegisterRequest struct {
 	IdempotencyKey  string `json:"-"`
 	ShortCode       string `json:"ShortCode"`

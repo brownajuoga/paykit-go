@@ -1,0 +1,8 @@
+{
+  "ResponseCode": "1",
+  "ResponseDescription": "The initiator information is invalid.",
+  "MerchantRequestID": "",
+  "CheckoutRequestID": "",
+  "ResultCode": "",
+  "ResultDesc": ""
+}
